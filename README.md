@@ -2,7 +2,7 @@
 
 A minimal Google ADK (Agent Development Kit) agent that connects to Google's
 hosted Maps MCP server over Streamable HTTP, exposing Maps tools (places,
-routes, etc.) to an `LlmAgent` running Gemini 2.0 Flash. The entire agent
+routes, etc.) to an `LlmAgent` running Gemini 3.1 Flash Lite. The entire agent
 definition lives in `mcp_maps_agent/agent.py`.
 
 - **Entry point:** `mcp_maps_agent/agent.py` — the whole agent is defined here.
