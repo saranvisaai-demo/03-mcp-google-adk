@@ -52,6 +52,25 @@ exercise it.
 
 ## Architecture notes
 
+```
+ User                LlmAgent                  McpToolset               Google Maps
+ input      ────▶   (Gemini 3.1       ────▶   (MCP client,     ────▶   MCP server
+ "find a             Flash Lite)               Streamable HTTP)         (places,
+  route to                │                         │                   routes API)
+  the park"              │                         │                         │
+                         │  decides it needs        │                         │
+                         │  a Maps tool,            │                         │
+                         │  calls it     ───────────▶                         │
+                         │                          │  forwards call +        │
+                         │                          │  X-Goog-Api-Key  ───────▶
+                         │                          │                         │
+                         │                          │  ◀────── route/place ───┘
+                         │  ◀── tool result ─────────┘           data
+                         │
+ reply     ◀───── natural-language answer
+ to user           grounded in the tool result
+```
+
 - `mcp_maps_agent/agent.py` wires together three ADK pieces:
   - `StreamableHTTPConnectionParams` — connection config pointing at the
     Google-hosted Maps MCP endpoint (`https://mapstools.googleapis.com/mcp`),
