@@ -5,6 +5,19 @@ hosted Maps MCP server over Streamable HTTP, exposing Maps tools (places,
 routes, etc.) to an `LlmAgent` running Gemini 2.0 Flash. The entire agent
 definition lives in `mcp_maps_agent/agent.py`.
 
+- **Entry point:** `mcp_maps_agent/agent.py` — the whole agent is defined here.
+- **How it works:** it wraps a `StreamableHTTPConnectionParams` connection to
+  `https://mapstools.googleapis.com/mcp` (authenticated via `X-Goog-Api-Key`)
+  in an `McpToolset`, then hands that toolset to an `LlmAgent` (`root_agent`)
+  running on Gemini.
+- **No local tools:** all Maps functionality lives on Google's remote MCP
+  server — nothing to maintain locally beyond the connection wiring.
+- **Run it:** `adk web` (browser chat UI) or `adk run mcp_maps_agent`
+  (terminal), after setting `MAPS_API_KEY` in a `.env` file.
+
+It's essentially a reference example showing how little code is needed to
+bolt a hosted MCP toolset onto an ADK agent.
+
 ## Setup
 
 ```bash
