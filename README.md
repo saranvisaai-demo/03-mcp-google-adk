@@ -40,7 +40,7 @@ exercise it.
 ## Architecture notes
 
 - `mcp_maps_agent/agent.py` wires together three ADK pieces:
-  - `StreamableHTTPConnnectionParams` — connection config pointing at the
+  - `StreamableHTTPConnectionParams` — connection config pointing at the
     Google-hosted Maps MCP endpoint (`https://mapstools.googleapis.com/mcp`),
     authenticated via the `X-Goog-Api-Key` header.
   - `McpToolset` — wraps that MCP connection so its tools can be handed to an

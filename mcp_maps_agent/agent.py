@@ -21,7 +21,7 @@ maps_toolset = McpToolset(
 )
 
 root_agent = LlmAgent(
-    model="gemini-2.0-flash",
+    model="gemini-3.1-flash-lite",
     name="maps_mcp_agent",
     instruction="You are a helpful assistant that can answer questions about Google Maps data. You have access to the Maps MCP toolset, which allows you to retrieve information about places, routes, and other map-related data.",
     tools=[maps_toolset]
